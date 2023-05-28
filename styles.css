@@ -1,0 +1,122 @@
+body {
+  background-color: #e4eff8;
+}
+#game1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 70px;
+  font-family: "Viga", sans-serif;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: "Viga", sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  /* border: solid; */
+}
+.button-container button {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  background: transparent;
+  transition: 0.2s;
+  border: none;
+}
+#game2 {
+  width: 50%;
+  text-align: center;
+}
+#result-container {
+  font-size: 20px;
+  font-family: "Viga", sans-serif;
+}
+button img {
+  width: 100%;
+  height: auto;
+}
+.reload {
+  display: none;
+}
+
+#scores {
+  font-size: 20px;
+  font-family: "Kanit", sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  background-color: #b4a4d1;
+  padding: 0px 10px;
+  width: 200px;
+  border-radius: 10px;
+}
+.winner-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner-container button {
+  font-family: "Viga", sans-serif;
+  font-size: 25px;
+  background-color: #b4a4d1;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 150px;
+  height: 75px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.winner-container button:hover {
+  background-color: #8255d3;
+  color: white;
+}
+.winner-display {
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: "Viga", sans-serif;
+}
+
+#computer-choice {
+  background-color: #b4a4d1;
+  position: absolute;
+  top: 10%;
+  right: 80%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Kanit", sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  border-radius: 10px;
+}
+#computer-choice img {
+  width: 70%;
+  height: auto;
+}
+
+#computer-choice img.hidden {
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.button-container button:hover {
+  width: 225px;
+  height: 225px;
+}

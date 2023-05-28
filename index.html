@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
-<meta charset="utf-8">
-<title>Rock Paper Scissors</title>
-<script src="script.js"></script>
-</head>
-<body>
-    <h1>Rock, paper, scissors</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rock Paper Scissors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Secular+One&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="computer-choice">
+      <p>Computer chose:</p>
+    </div>
+    <div id="scores">
+      <p id="yours">Your score:</p>
+      <p id="computers">Computer Score:</p>
+    </div>
+    <div id="game1">
+      <h1>Rock Paper Scissors</h1>
+      <h2>First to 5 points wins!</h2>
+      <h2>Choose your weapon to start:</h2>
+      <div id="game2">
+        <div id="result-container"></div>
+        <div class="button-container">
+          <button id="rock" value="rock"><img src="images/rock.png" /></button>
+          <button id="paper" value="paper">
+            <img src="images/paper.png" />
+          </button>
+          <button id="scissors" value="scissors">
+            <img src="images/scissors.png" />
+          </button>
+        </div>
+        <div class="winner-container">
+          <div class="winner-display"></div>
+          <button class="reload">Restart game</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

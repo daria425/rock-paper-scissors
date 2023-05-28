@@ -1,83 +1,113 @@
-const myArray=[
-    "rock",
-    "paper",
-    "scissors"
-];
+const myArray = ["rock", "paper", "scissors"];
+let playerPoints = 0;
+let computerPoints = 0;
 
 function computerChoice() {
-const randomIndex= Math.floor(Math.random()*myArray.length);
-const choice = myArray[randomIndex];
-return choice;}
-
-function playRound(computerSelection, playerSelection) {
-    console.log(computerSelection);
-    if (computerSelection===playerSelection.toLowerCase()) {
-        return draw;}
-    else if (computerSelection==="rock"&&playerSelection.toLowerCase()==="scissors") {return computerWin;}
-    else if (computerSelection==="rock"&&playerSelection.toLowerCase()==="paper") {return playerWin;}
-    else if (computerSelection==="paper"&&playerSelection.toLowerCase()==="rock") {return computerWin;}
-    else if (computerSelection==="paper"&&playerSelection.toLowerCase()==="scissors") {return playerWin;}
-    else if (computerSelection==="scissors"&&playerSelection.toLowerCase()==="paper") {return computerWin}
-    else if (computerSelection==="scissors"&&playerSelection.toLowerCase()==="rock") {return playerWin;}
-    else {return false}}
- 
-    const playerWin='Player wins round';
-    const computerWin='Computer wins round';
-    const draw="Its a draw!";
-
-    let playerPoints=0;
-let computerPoints=0;
-
-
-
-for(let i=0;i<=5;i++) {function game() {
-let playerSelection= prompt('rock, paper,scissors?',);
-const computerSelection=computerChoice();
-let result=playRound(computerSelection, playerSelection);
-console.log(score(result));
-alert(result + "//" + " " + "Your score:" + playerPoints + "|" + "Computer score:" + computerPoints);
-return result;
+  const randomIndex = Math.floor(Math.random() * myArray.length);
+  const choice = myArray[randomIndex];
+  return choice;
 }
+let img = document.createElement("img");
+function hide() {
+  img.classList.add("hidden");
+}
+function unhide() {
+  img.classList.remove("hidden");
+}
+function playRound(playerSelection) {
+  let computerSelection = computerChoice();
+  setTimeout(unhide, 500);
+  if (computerSelection === "rock" && playerSelection === "rock") {
+    img.src = "images/rock.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return draw;
+  } else if (computerSelection === "paper" && playerSelection === "paper") {
+    img.src = "images/paper.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return draw;
+  } else if (
+    computerSelection === "scissors" &&
+    playerSelection === "scissors"
+  ) {
+    img.src = "images/scissors.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return draw;
+  } else if (computerSelection === "rock" && playerSelection === "scissors") {
+    computerPoints++;
+    img.src = "images/rock.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return computerWin;
+  } else if (computerSelection === "rock" && playerSelection === "paper") {
+    playerPoints++;
+    img.src = "images/rock.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return playerWin;
+  } else if (computerSelection === "paper" && playerSelection === "rock") {
+    computerPoints++;
+    img.src = "images/paper.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return computerWin;
+  } else if (computerSelection === "paper" && playerSelection === "scissors") {
+    playerPoints++;
+    img.src = "images/paper.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return playerWin;
+  } else if (computerSelection === "scissors" && playerSelection === "paper") {
+    computerPoints++;
+    img.src = "images/scissors.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return computerWin;
+  } else if (computerSelection === "scissors" && playerSelection === "rock") {
+    playerPoints++;
+    img.src = "images/scissors.png";
+    document.getElementById("computer-choice").appendChild(img);
+    return playerWin;
+  } else {
+    return false;
+  }
+}
+const playerWin = "Player wins round!";
+const computerWin = "Computer wins round!";
+const draw = "Its a draw!";
 
-console.log(game());}
-winner();
-
-function score (result) {
-    if (result===playerWin){
-     playerPoints++;
-     console.log(playerPoints, computerPoints);
-     return {playerPoints, computerPoints}}
-     else if (result===computerWin) {
-        computerPoints++;
-    console.log(playerPoints, computerPoints)
-    return {playerPoints, computerPoints}}
-    else {console.log(playerPoints, computerPoints);
-        return {playerPoints,computerPoints}}};  
-
-
-
+const winnerDisplay = document.querySelector(".winner-display");
+const reloadBtn = document.querySelector(".reload");
 function winner() {
-    if (playerPoints==computerPoints) {
-        alert ('no winner :/');
-    }
-    else if (playerPoints>computerPoints) {
-        alert ('u have won :)');}
-    else if (playerPoints<computerPoints) {
-        alert ('u lost :(')
-    }
+  if (computerPoints === 5 && playerPoints < computerPoints) {
+    winnerDisplay.textContent =
+      "Computer won the game, press the button to play again";
+    disableBtns();
+    reloadBtn.style.display = "block";
+  } else if (playerPoints === 5 && playerPoints > computerPoints) {
+    winnerDisplay.textContent = "You won! Press the button to play again";
+    disableBtns();
+    reloadBtn.style.display = "block";
+  }
 }
+reloadBtn.addEventListener("click", function () {
+  window.location.reload();
+});
 
+const resultContainer = document.getElementById("result-container");
+const Buttons = document.querySelectorAll("button:not(.reload)");
+console.log(Buttons);
+const playerScore = document.getElementById("yours");
+const computerScore = document.getElementById("computers");
+Buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    hide();
+    let result = playRound(button.value);
+    setTimeout(() => {
+      resultContainer.innerHTML = result;
+      playerScore.textContent = `Your score: ${playerPoints}`;
+      computerScore.textContent = `Computer score: ${computerPoints}`;
+      winner(computerPoints, playerPoints);
+    }, 500);
+  });
+});
 
-
-//console.log(computerChoice());
-
-  
-
-
-    //console.log(computerChoice());}
-//paper beats rock
-//rock beats scissors
-//scissors beat paper
-//Pseudocode: Player inputs choice into prompt window, computer makes choice. 
-//If the player choice was paper and computer choice was rock, message displayed: You lose!
-//
+function disableBtns() {
+  for (let i = 0; i < Buttons.length; i++) {
+    Buttons[i].disabled = true;
+  }
+}
