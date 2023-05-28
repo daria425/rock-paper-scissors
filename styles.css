@@ -1,26 +1,33 @@
 body {
   background-color: #e4eff8;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 10px;
 }
 #game1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 
 h1 {
-  font-size: 70px;
+  font-size: 50px;
   font-family: "Viga", sans-serif;
+  margin: 0;
+  padding-top: 0;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 20px;
   font-family: "Viga", sans-serif;
 }
 
 .button-container {
+  margin-top: 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 50px;
   /* border: solid; */
 }
 .button-container button {
@@ -32,7 +39,6 @@ h2 {
   border: none;
 }
 #game2 {
-  width: 50%;
   text-align: center;
 }
 #result-container {
@@ -52,12 +58,10 @@ button img {
   font-family: "Kanit", sans-serif;
   font-style: italic;
   font-weight: 500;
-  position: absolute;
-  top: 10%;
-  left: 80%;
   background-color: #b4a4d1;
   padding: 0px 10px;
   width: 200px;
+  height: min-content;
   border-radius: 10px;
 }
 .winner-container {
@@ -92,11 +96,8 @@ button img {
 
 #computer-choice {
   background-color: #b4a4d1;
-  position: absolute;
-  top: 10%;
-  right: 80%;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,7 +108,7 @@ button img {
   border-radius: 10px;
 }
 #computer-choice img {
-  width: 70%;
+  width: 60%;
   height: auto;
 }
 
